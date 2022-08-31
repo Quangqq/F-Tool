@@ -26,9 +26,15 @@
 
 * Vui lòng sử dụng máy chủ giả mạo để có trải nghiệm tốt nhất.
 
-* ```git clone https://github.com/DauDau432/F-Tool```
-* ```cd F-Tool; sh install.sh```
+```
+git clone https://github.com/DauDau432/F-Tool
+```
+```
+cd F-Tool; sh install.sh
+```
 
 * Cài đặt CentOS
 
-* ```cd F-Tool; sh installCentOS.sh```
+```
+cd F-Tool; sh installCentOS.sh
+```
