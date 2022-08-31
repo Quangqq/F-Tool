@@ -1,15 +1,15 @@
 
 
-<h1 align="center">F-Tool - Powerful DDoS Script With 9 Methods</h1>
-<em><h5 align="center">Programming Language - Python 3</h5></em>
+<h1 align="center">F-Tool - Tập lệnh DDoS mạnh mẽ với 9 phương pháp</h1>
+<em><h5 align="center">Ngôn ngữ lập trình - Python 3</h5></em>
 
-<p align="center">Please Don't Attack government websites.</p>
+<p align="center">Xin đừng tấn công các trang web của chính phủ.</p>
 
-# Features And Methods
+# Tính năng và phương pháp
 
 * Layer4
 
-* VSE: UDP Valve Source Engine specific flood
+* VSE: Công cụ nguồn van UDP lũ lụt cụ thể
 * SYN: TCP SYN flood
 * TCP: TCP junk flood
 * UDP:  UDP junk flood
@@ -20,27 +20,15 @@
 * SOCKET: Slow HTTP/1.1 socket flood
 * HTTP1: TLS HTTP/1.1 GET flood
 * HTTP2: TLS HTTP/2 GET flood
-* CRINGE: Powerful Method Target Maybe die from Cringe
+* CRINGE: Phương pháp mạnh mẽ Mục tiêu Có thể chết vì Cringe
 
-# Installation
+# Cài đặt
 
-* Please use spoofed server for the best experience.
+* Vui lòng sử dụng máy chủ giả mạo để có trải nghiệm tốt nhất.
 
-* ```git clone https://github.com/ngdangtr/F-Tool```
+* ```git clone https://github.com/DauDau432/F-Tool```
 * ```cd F-Tool; sh install.sh```
 
-* Install CentOS
+* Cài đặt CentOS
 
 * ```cd F-Tool; sh installCentOS.sh```
-
-
-
-# Contact dev
-* Telegram: ```@ngdangtr```
-
-# Donation
-* Momo: ```0965849504```
-
-
-
-
