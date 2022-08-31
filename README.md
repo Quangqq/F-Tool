@@ -7,7 +7,7 @@
 
 # Tính năng và phương pháp
 
-* Layer4
+ ***Layer4***
 
 * VSE: Công cụ nguồn van UDP lũ lụt cụ thể
 * SYN: TCP SYN flood
@@ -15,7 +15,7 @@
 * UDP:  UDP junk flood
 * HTTP: HTTP GET request flood
 
-* Layer7
+***Layer7***
 
 * SOCKET: Slow HTTP/1.1 socket flood
 * HTTP1: TLS HTTP/1.1 GET flood
