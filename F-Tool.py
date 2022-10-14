@@ -61,12 +61,16 @@ class Home:
 
 	def home(self): # don't edit this banner lol
 		print(f"""
-    {Color.LG}╔══════════════════════╗
-    {Color.LC}╔═╗{Color.LB} ╔╦╗╔═╗╔═╗╦      {Color.LG}║ {Color.LR}Created: {Color.LY}5/3/22      {Color.LG}║
-    {Color.LC}╠╣{Color.LB}{Color.LR}───{Color.LB}║ ║ ║║ ║║      {Color.LG}║ {Color.LR}Updated: {Color.LY}8/3/22      {Color.LG}║
-    {Color.LC}╚{Color.LB}    ╩ ╚═╝╚═╝╩═╝{Color.LG}v2  {Color.LG}║ {Color.LB}Simple but mighty XD {Color.LG}║
-                        {Color.LG}╚══════════════════════╝
-    {Color.LR}[{Color.LG}>     Made with By NguyenDangTrinh    {Color.LG}<{Color.LR}]""")
+				    ______    ______ ____   ____   __       
+				   / ____/   /_  __// __ \ / __ \ / /       
+				  / /_ ______ / /  / / / // / / // /        
+				 / __//_____// /  / /_/ // /_/ // /___      
+				/_/         /_/   \____/ \____//_____/      
+				       __                   __              
+				  ____/ /____ _ __  __ ____/ /____ _ __  __ 
+				 / __  // __ `// / / // __  // __ `// / / / 
+				/ /_/ // /_/ // /_/ // /_/ // /_/ // /_/ /  
+				\__,_/ \__,_/ \__,_/ \__,_/ \__,_/ \__,_/ """)
 		print(Color.LC+"    Type "+Color.LB+"'HELP'"+Color.LC+" to see all commands\n\n")
 		print(Color.LR+"["+Color.LG+"01"+Color.LR+"]"+Color.LC+" Proxy")
 		print(Color.LR+"["+Color.LG+"02"+Color.LR+"]"+Color.LC+" WebTool")
