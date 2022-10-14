@@ -38,3 +38,7 @@ cd F-Tool; sh install.sh
 ```
 cd F-Tool; sh installCentOS.sh
 ```
+
+# Nguồn
+
+[Tác giả ***FDc0d3***](https://github.com/FDc0d3?tab=repositories)
