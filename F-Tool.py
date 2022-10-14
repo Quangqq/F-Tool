@@ -59,7 +59,7 @@ class Home:
 			else:
 				time.sleep(1)
 
-	def home(self): # don't edit this banner lol
+	def home(self):
 		print(f"""{Color.LG}
 
     ______    ______ ____   ____   __       
