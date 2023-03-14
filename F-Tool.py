@@ -36,7 +36,7 @@ class Home:
 		self.dev = dev
 
 	def getproxies(self):
-		#self.styleText("\n [*] Đang tải xuống proxy...\n")
+		self.styleText("\n [*] Đang tải xuống proxy...\n")
 		file_name = "utils/http.txt"
 		http_proxies = [
 			"https://api.proxyscrape.com/v2/?request=displayproxies&protocol=http&timeout=10000&country=all&ssl=all&anonymity=all",#copyright by daudau
@@ -89,8 +89,6 @@ class Home:
 				elif option in ['04', '4']:
 					os.system('clear')
 					Tool.spdtest()
-				elif option in ['ref', 'REF']:
-					self.home()
 				elif option in ['home', 'HOME']:
 					self.home()
 				elif option in ['clear', 'CLEAR']:
@@ -103,7 +101,7 @@ class Home:
 					subprocess.run(['pkill -f F-Tool.py'], shell=True)
 				elif option in ['stop', 'STOP']:
 					subprocess.run(['pkill screen'], shell=True)
-					print(f"{Color.LG} [!] tấn công dừng lại!")
+					print(f"{Color.LG} [!] Cuộc tấn công đã dừng lại!")
 				elif option in ['00', '0']:
 					subprocess.run(['pkill -f F-Tool.py'], shell=True)
 					subprocess.run(['pkill screen'], shell=True)	
@@ -238,7 +236,7 @@ class Tool:
 				readjson = json.loads(p.read())
 		except FileNotFoundError:
 			sys.exit(f"{Color.LR}LỖI:{Color.RESET} File: 'utils' Không tìm thấy")
-		if new in ['ref', 'REF', 'clear', 'CLEAR']:
+		if new in ['clear', 'CLEAR']:
 			os.system('clear')
 			F_Tool.styleText("[*] Đang tải xuống Proxy mới...")
 		else:
@@ -296,8 +294,6 @@ class Tool:
 					with open("socks5.txt", 'w') as p:
 						p.write(socks5)
 					print(Color.LG+"[+]"+Color.LC+" SOCKS5 Đã lưu vào socks5.txt")
-				elif option in ['ref', 'REF']:
-					self.proxy(option)
 				elif option in ['home', 'HOME']:
 					F_Tool.home()
 				elif option in ['clear', 'CLEAR']:
@@ -311,7 +307,7 @@ class Tool:
 					subprocess.run(['pkill -f F-Tool.py'], shell=True)
 				elif option in ['stop', 'STOP']:
 					subprocess.run(['pkill screen'], shell=True)
-					print(f"{Color.LG} [!] tấn công dừng lại!")
+					print(f"{Color.LG} [!] Cuộc tấn công đã dừng lại!")
 				elif option in ['00', '0']:
 					F_Tool.home()	
 				elif option in ['ddos', 'DDOS', 'bbos', 'BBOS']:
@@ -382,8 +378,6 @@ class Tool:
 					excractlink = input(Color.LR+"["+Color.LG+"TRÍCH LINK"+Color.LR+"]"+Color.LC+" Nhập URL mục tiêu: "+Color.RESET)
 					print(response_url(self.headers).extractlink(excractlink))
 					break
-			elif option in ['ref', 'REF']:
-				self.webtools()
 			elif option in ['home', 'HOME']:
 				F_Tool.home()
 			elif option in ['clear', 'CLEAR']:
@@ -396,7 +390,7 @@ class Tool:
 				subprocess.run(['pkill -f F-Tool.py'], shell=True)
 			elif option in ['stop', 'STOP']:
 				subprocess.run(['pkill screen'], shell=True)
-				print(f"{Color.LG} [!] tấn công dừng lại!")
+				print(f"{Color.LG} [!] Cuộc tấn công đã dừng lại!")
 			elif option in ['00', '0']:
 				F_Tool.home()	
 			elif option in ['ddos', 'DDOS', 'bbos', 'BBOS']:
@@ -479,7 +473,7 @@ class Tool:
 				subprocess.run(['pkill -f F-Tool.py'], shell=True)
 			elif option in ['stop', 'STOP']:
 				subprocess.run(['pkill screen'], shell=True)
-				print(f"{Color.LG} [!] tấn công dừng lại!")
+				print(f"{Color.LG} [!] Cuộc tấn công đã dừng lại!")
 			elif option in ['00', '0']:
 				F_Tool.home()	
 			elif option in ['ddos', 'DDOS', 'bbos', 'BBOS']:
@@ -505,6 +499,7 @@ class Tool:
 		print(Color.LR+"["+Color.LG+"03"+Color.LR+"]"+Color.LC+" TCP: Lũ rác TCP")
 		print(Color.LR+"["+Color.LG+"04"+Color.LR+"]"+Color.LC+" UDP: Lũ rác UDP")
 		print(Color.LR+"["+Color.LG+"05"+Color.LR+"]"+Color.LC+" HTTP: Lũ yêu cầu HTTP GET")
+		print(Color.LR+"["+Color.LG+"06"+Color.LR+"]"+Color.LC+" Stop: Dừng tất cả các cuộc tấn công")
 		print(Color.LR+"["+Color.LG+"00"+Color.LR+"]"+Color.LC+" Quay lại")
 		print("\n")
 		while True:
@@ -561,8 +556,6 @@ class Tool:
 					print(Color.LG+f"\n [!] Tấn công được gửi thành công!\n")
 				except:
 					print(f"{Color.LR}LỖI: {Color.RESET}Thử lại")
-			elif option in ['ref', 'REF']:
-				self.l4()
 			elif option in ['home', 'HOME']:
 				F_Tool.home()
 			elif option in ['clear', 'CLEAR']:
@@ -573,9 +566,9 @@ class Tool:
 				print(self.dev)
 			elif option in ['exit', 'EXIT']:
 				subprocess.run(['pkill -f F-Tool.py'], shell=True)
-			elif option in ['stop', 'STOP']:
+			elif option in ['stop', 'STOP', '06', '6']:
 				subprocess.run(['pkill screen'], shell=True)
-				print(f"{Color.LG} [!] tấn công dừng lại!")
+				print(f"{Color.LG} [!] Cuộc tấn công đã dừng lại!")
 			elif option in ['00', '0']:
 				os.system('clear');self.bbos()
 			elif option in ['ddos', 'DDOS', 'bbos', 'BBOS']:
@@ -600,6 +593,7 @@ class Tool:
 		print(Color.LR+"["+Color.LG+"02"+Color.LR+"]"+Color.LC+" HTTP1: TLS HTTP/1.1 GET lũ lụt (JS)")
 		print(Color.LR+"["+Color.LG+"03"+Color.LR+"]"+Color.LC+" HTTP2: TLS HTTP/2 GET lũ lụt (JS)")
 		print(Color.LR+"["+Color.LG+"04"+Color.LR+"]"+Color.LC+" CRINGE: Mục tiêu phương pháp mạnh mẽ Có thể chết vì CRINGE (JS)")
+		print(Color.LR+"["+Color.LG+"05"+Color.LR+"]"+Color.LC+" Stop: Dừng tất cả các cuộc tấn công")		
 		print(Color.LR+"["+Color.LG+"00"+Color.LR+"]"+Color.LC+" Quay lại")
 		print("\n")
 		while True:
@@ -638,8 +632,6 @@ class Tool:
 					print(Color.LG+f"\n [!] Tấn công được gửi thành công!\n")
 				except:
 					print(f"{Color.LR}LỖI: {Color.RESET}Thử lại")
-			elif option in ['ref', 'REF']:
-				self.l7()
 			elif option in ['home', 'HOME']:
 				F_Tool.home()
 			elif option in ['clear', 'CLEAR']:
@@ -651,7 +643,7 @@ class Tool:
 				print(self.dev)
 			elif option in ['exit', 'EXIT']:
 				subprocess.run(['pkill -f F-Tool.py'], shell=True)
-			elif option in ['stop', 'STOP']:
+			elif option in ['stop', 'STOP', '05, '5']:
 				subprocess.run(['pkill screen'], shell=True)
 				print(f"{Color.LG} [!] Cuộc tấn công đã dừng lại!")
 			elif option in ['00', '0']:
@@ -722,11 +714,10 @@ def main():
 
 if __name__ == '__main__':
 	commands = f"""{Color.LC}HOME{Color.LR} ~>{Color.LY}Trở về home
-{Color.LC}REF{Color.LR} ~> {Color.LY}Làm mới menu
-{Color.LC}CLEAR{Color.LR} ~> {Color.LY}Xóa màn hình
+{Color.LC}CLEAR{Color.LR} ~> {Color.LY}Làm mới menu
 {Color.LC}EXIT{Color.LR} ~> {Color.LY}Thoát khỏi chương trình
 {Color.LC}BBOS{Color.LR} ~> {Color.LY}Tấn công DDOS L4/L7
-{Color.LC}STOP{Color.LR} ~> {Color.LY}Dừng cuộc tấn công của bạn
+{Color.LC}STOP{Color.LR} ~> {Color.LY}Dừng tất cả cuộc tấn công
 {Color.LC}DEV{Color.LR} ~> {Color.LY}Liên hệ / Hỗ trợ nhà phát triển"""
 	dev = f"""{Color.LC}Telegram{Color.LR}: {Color.LY}https://t.me/Daukute
 {Color.LC}Zalo{Color.LR}: {Color.LY}https://zalo.me/0983538806"""
