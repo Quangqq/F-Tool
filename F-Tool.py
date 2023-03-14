@@ -499,7 +499,6 @@ class Tool:
 		print(Color.LR+"["+Color.LG+"03"+Color.LR+"]"+Color.LC+" TCP: Lũ rác TCP")
 		print(Color.LR+"["+Color.LG+"04"+Color.LR+"]"+Color.LC+" UDP: Lũ rác UDP")
 		print(Color.LR+"["+Color.LG+"05"+Color.LR+"]"+Color.LC+" HTTP: Lũ yêu cầu HTTP GET")
-		print(Color.LR+"["+Color.LG+"06"+Color.LR+"]"+Color.LC+" Stop: Dừng tất cả các cuộc tấn công")
 		print(Color.LR+"["+Color.LG+"00"+Color.LR+"]"+Color.LC+" Quay lại")
 		print("\n")
 		while True:
@@ -566,7 +565,7 @@ class Tool:
 				print(self.dev)
 			elif option in ['exit', 'EXIT']:
 				subprocess.run(['pkill -f F-Tool.py'], shell=True)
-			elif option in ['stop', 'STOP', '06', '6']:
+			elif option in ['stop', 'STOP']:
 				subprocess.run(['pkill screen'], shell=True)
 				print(f"{Color.LG} [!] Cuộc tấn công đã dừng lại!")
 			elif option in ['00', '0']:
@@ -592,8 +591,7 @@ class Tool:
 		print(Color.LR+"["+Color.LG+"01"+Color.LR+"]"+Color.LC+" SOCKET: Lũ SOCKET HTTP/1.1 chậm (JS)")
 		print(Color.LR+"["+Color.LG+"02"+Color.LR+"]"+Color.LC+" HTTP1: TLS HTTP/1.1 GET lũ lụt (JS)")
 		print(Color.LR+"["+Color.LG+"03"+Color.LR+"]"+Color.LC+" HTTP2: TLS HTTP/2 GET lũ lụt (JS)")
-		print(Color.LR+"["+Color.LG+"04"+Color.LR+"]"+Color.LC+" CRINGE: Mục tiêu phương pháp mạnh mẽ Có thể chết vì CRINGE (JS)")
-		print(Color.LR+"["+Color.LG+"05"+Color.LR+"]"+Color.LC+" Stop: Dừng tất cả các cuộc tấn công")		
+		print(Color.LR+"["+Color.LG+"04"+Color.LR+"]"+Color.LC+" CRINGE: Mục tiêu phương pháp mạnh mẽ Có thể chết vì CRINGE (JS)")	
 		print(Color.LR+"["+Color.LG+"00"+Color.LR+"]"+Color.LC+" Quay lại")
 		print("\n")
 		while True:
@@ -643,7 +641,7 @@ class Tool:
 				print(self.dev)
 			elif option in ['exit', 'EXIT']:
 				subprocess.run(['pkill -f F-Tool.py'], shell=True)
-			elif option in ['stop', 'STOP', '05', '5']:
+			elif option in ['stop', 'STOP']:
 				subprocess.run(['pkill screen'], shell=True)
 				print(f"{Color.LG} [!] Cuộc tấn công đã dừng lại!")
 			elif option in ['00', '0']:
