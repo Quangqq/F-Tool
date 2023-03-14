@@ -5,7 +5,7 @@
 
 <p align="center">Xin đừng tấn công các trang web của chính phủ.</p>
 
-# Tính năng và phương pháp
+### Tính năng và phương pháp
 
  ***Layer4***
 
@@ -22,9 +22,9 @@
 * HTTP2: TLS HTTP/2 GET flood
 * CRINGE: Phương pháp mạnh mẽ Mục tiêu Có thể chết vì Cringe
 
-# Cài đặt
+### Cài đặt
 
-* Vui lòng sử dụng máy chủ giả mạo để có trải nghiệm tốt nhất.
+***Vui lòng sử dụng máy chủ giả mạo để có trải nghiệm tốt nhất***
 
 ```
 git clone https://github.com/DauDau432/F-Tool
@@ -33,12 +33,6 @@ git clone https://github.com/DauDau432/F-Tool
 cd F-Tool; sh install.sh
 ```
 
-* Cài đặt CentOS
-
-```
-cd F-Tool; sh installCentOS.sh
-```
-
-# Nguồn
+### Nguồn
 
 [Tác giả ***FDc0d3***](https://github.com/FDc0d3?tab=repositories)
