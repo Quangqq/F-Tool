@@ -729,7 +729,7 @@ if __name__ == '__main__':
 {Color.LC}STOP{Color.LR} ~> {Color.LY}Dừng cuộc tấn công của bạn
 {Color.LC}DEV{Color.LR} ~> {Color.LY}Liên hệ / Hỗ trợ nhà phát triển"""
 	dev = f"""{Color.LC}Telegram{Color.LR}: {Color.LY}https://t.me/Daukute
-{Color.LC}Momo{Color.LR}: {Color.LY}0983538806"""
+{Color.LC}Zalo{Color.LR}: {Color.LY}https://zalo.me/0983538806"""
 	F_Tool = Home(commands, dev)
 	Tool = Tool(commands, dev, spoof_useragents())
 	try:open('F-Tool.py');main()
