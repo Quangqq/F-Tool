@@ -1,4 +1,4 @@
-sudo apt -y update; sudo apt -y install screen git nodejs
+sudo apt -y update; sudo apt -y install python3-pip screen git nodejs npm
 npm i fake-useragent
 npm i randomstring
 npm i request
