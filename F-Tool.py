@@ -63,14 +63,14 @@ class Home:
     {Color.LC}╠╣{Color.LB}{Color.LR}───{Color.LB}║ ║ ║║ ║║      {Color.LG}║ {Color.LR}Updated: {Color.LY}8/3/22        {Color.LG}║
     {Color.LC}╚{Color.LB}    ╩ ╚═╝╚═╝╩═╝{Color.LG}v2  {Color.LG}║ {Color.LB}Đơn giản nhưng mạnh mẽ {Color.LG}║
                         {Color.LG}╚════════════════════════╝
-    {Color.LR}[{Color.LG}> Được thực hiện bởi FDc0d3 {Color.LG}<{Color.LR}]
-    {Color.LR}[{Color.LG}>   Được dịch bởi Đậu Đậu   {Color.LG}<{Color.LR}]""")
+    {Color.LR}[{Color.LG}>      Được thực hiện bởi FDc0d3       {Color.LG}<{Color.LR}]
+    {Color.LR}[{Color.LG}> Được dịch & phát triển bởi Đậu Đậu   {Color.LG}<{Color.LR}]""")
 		print(Color.LC+"    Gõ "+Color.LB+"'HELP'"+Color.LC+" để xem tất cả các lệnh\n\n")
 		print(Color.LR+"["+Color.LG+"01"+Color.LR+"]"+Color.LC+" Proxy")
 		print(Color.LR+"["+Color.LG+"02"+Color.LR+"]"+Color.LC+" WebTool")
 		print(Color.LR+"["+Color.LG+"03"+Color.LR+"]"+Color.LC+" L4/L7/BBoS")
 		print(Color.LR+"["+Color.LG+"04"+Color.LR+"]"+Color.LC+" SpeedTest")
-		print(Color.LR+"["+Color.LG+"00"+Color.LR+"]"+Color.LC+" Quay lại")
+		print(Color.LR+"["+Color.LG+"00"+Color.LR+"]"+Color.LC+" Thoát")
 		print("\n")
 		while True:
 			try:
@@ -104,7 +104,8 @@ class Home:
 					subprocess.run(['pkill screen'], shell=True)
 					print(f"{Color.LG} [!] tấn công dừng lại!")
 				elif option in ['00', '0']:
-					os.system('clear');self.bbos()	
+					subprocess.run(['pkill -f F-Tool.py'], shell=True)
+					subprocess.run(['pkill screen'], shell=True)	
 				elif option in ['ddos', 'DDOS', 'bbos', 'BBOS']:
 					os.system('clear');Tool.bbos()
 				elif option == "":
@@ -310,7 +311,7 @@ class Tool:
 					subprocess.run(['pkill screen'], shell=True)
 					print(f"{Color.LG} [!] tấn công dừng lại!")
 				elif option in ['00', '0']:
-					os.system('clear');self.bbos()	
+					F_Tool.home()	
 				elif option in ['ddos', 'DDOS', 'bbos', 'BBOS']:
 					os.system('clear');Tool.bbos()
 				elif option == "":
@@ -394,7 +395,7 @@ class Tool:
 				subprocess.run(['pkill screen'], shell=True)
 				print(f"{Color.LG} [!] tấn công dừng lại!")
 			elif option in ['00', '0']:
-				os.system('clear');self.bbos()	
+				F_Tool.home()	
 			elif option in ['ddos', 'DDOS', 'bbos', 'BBOS']:
 				os.system('clear');Tool.bbos()
 			elif option == "":
@@ -476,7 +477,7 @@ class Tool:
 				subprocess.run(['pkill screen'], shell=True)
 				print(f"{Color.LG} [!] tấn công dừng lại!")
 			elif option in ['00', '0']:
-				os.system('clear');self.bbos()	
+				F_Tool.home()	
 			elif option in ['ddos', 'DDOS', 'bbos', 'BBOS']:
 				os.system('clear');Tool.bbos()
 			elif option == "":
