@@ -57,6 +57,7 @@ class Home:
 				time.sleep(1)
 
 	def home(self): # đừng chỉnh sửa banner này
+		clear
 		print(f"""
                         {Color.LG}╔════════════════════════╗
     {Color.LC}╔═╗{Color.LB} ╔╦╗╔═╗╔═╗╦      {Color.LG}║ {Color.LR}Created: {Color.LY}5/3/22        {Color.LG}║
@@ -320,6 +321,7 @@ class Tool:
 					print(Color.LR+"yêu cầu: "+Color.LG+f"{option}"+Color.LR+" không tìm thấy")
 
 	def webtools(self):
+		clear
 		print(f"""{Color.LG}
 
    __    __     _    _____            _
@@ -404,6 +406,7 @@ class Tool:
 				print(Color.LR+"yêu cầu: "+Color.LG+f"{option}"+Color.LR+" không tìm thấy")
 
 	def spdtest(self):
+		clear
 		print(f"""{Color.LG}
 
    __                     _ _____          _
@@ -486,6 +489,7 @@ class Tool:
 				print(Color.LR+"yêu cầu: "+Color.LG+f"{option}"+Color.LR+" không tìm thấy")
 
 	def l4(self):
+		clear
 		print(f"""{Color.LG}
      __                       _  _
     / /  __ _ _   _  ___ _ __| || |
@@ -581,6 +585,7 @@ class Tool:
 				print(Color.LR+"yêu cầu: "+Color.LG+f"{option}"+Color.LR+" không tìm thấy")
 
 	def l7(self):
+		clear
 		print(f"""{Color.LG}
      __                      _____
     / /  __ _ _   _  ___ _ _|___  |
