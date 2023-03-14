@@ -57,7 +57,6 @@ class Home:
 				time.sleep(1)
 
 	def home(self): # đừng chỉnh sửa banner này
-		clear
 		print(f"""
                         {Color.LG}╔════════════════════════╗
     {Color.LC}╔═╗{Color.LB} ╔╦╗╔═╗╔═╗╦      {Color.LG}║ {Color.LR}Created: {Color.LY}5/3/22        {Color.LG}║
