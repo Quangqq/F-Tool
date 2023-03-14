@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 from shutil import which
 from urllib import parse
 from os import system
