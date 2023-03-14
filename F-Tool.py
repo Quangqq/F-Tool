@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 from shutil import which
 from urllib import parse
 from os import system
@@ -57,7 +56,7 @@ class Home:
 			else:
 				time.sleep(1)
 
-	def home(self): # đừng chỉnh sửa banner này
+	def home(self): # đừng chỉnh sửa banner này 
 		print(f"""
                         {Color.LG}╔════════════════════════╗
     {Color.LC}╔═╗{Color.LB} ╔╦╗╔═╗╔═╗╦      {Color.LG}║ {Color.LR}Created: {Color.LY}5/3/22        {Color.LG}║
