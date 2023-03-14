@@ -57,14 +57,15 @@ class Home:
 				time.sleep(1)
 
 	def home(self): # đừng chỉnh sửa banner này 
+		os.system('clear')
 		print(f"""
                         {Color.LG}╔════════════════════════╗
     {Color.LC}╔═╗{Color.LB} ╔╦╗╔═╗╔═╗╦      {Color.LG}║ {Color.LR}Created: {Color.LY}5/3/22        {Color.LG}║
     {Color.LC}╠╣{Color.LB}{Color.LR}───{Color.LB}║ ║ ║║ ║║      {Color.LG}║ {Color.LR}Updated: {Color.LY}8/3/22        {Color.LG}║
     {Color.LC}╚{Color.LB}    ╩ ╚═╝╚═╝╩═╝{Color.LG}v2  {Color.LG}║ {Color.LB}Đơn giản nhưng mạnh mẽ {Color.LG}║
                         {Color.LG}╚════════════════════════╝
-    {Color.LR}[{Color.LG}>      Được thực hiện bởi FDc0d3         {Color.LG}<{Color.LR}]
-    {Color.LR}[{Color.LG}>   Được dịch & phát triển bởi Đậu Đậu   {Color.LG}<{Color.LR}]""")
+    {Color.LR}[{Color.LG}>          Được thực hiện bởi FDc0d3         {Color.LG}<{Color.LR}]
+    {Color.LR}[{Color.LG}>     Được dịch & phát triển bởi Đậu Đậu     {Color.LG}<{Color.LR}]""")
 		print(Color.LC+"    Gõ "+Color.LB+"'HELP'"+Color.LC+" để xem tất cả các lệnh\n\n")
 		print(Color.LR+"["+Color.LG+"01"+Color.LR+"]"+Color.LC+" Proxy")
 		print(Color.LR+"["+Color.LG+"02"+Color.LR+"]"+Color.LC+" WebTool")
@@ -259,6 +260,7 @@ class Tool:
 			os.system('clear')
 		except requests.exceptions.ConnectionError:
 			sys.exit(Color.LR+"\nLỗi: Kiểm tra kết nối Internet của bạn.")
+		os.system('clear')
 		print(f"""{Color.LG}
 
      ___               _
@@ -320,7 +322,7 @@ class Tool:
 					print(Color.LR+"yêu cầu: "+Color.LG+f"{option}"+Color.LR+" không tìm thấy")
 
 	def webtools(self):
-		clear
+		os.system('clear')
 		print(f"""{Color.LG}
 
    __    __     _    _____            _
@@ -405,7 +407,7 @@ class Tool:
 				print(Color.LR+"yêu cầu: "+Color.LG+f"{option}"+Color.LR+" không tìm thấy")
 
 	def spdtest(self):
-		clear
+		os.system('clear')
 		print(f"""{Color.LG}
 
    __                     _ _____          _
@@ -488,7 +490,7 @@ class Tool:
 				print(Color.LR+"yêu cầu: "+Color.LG+f"{option}"+Color.LR+" không tìm thấy")
 
 	def l4(self):
-		clear
+		os.system('clear')
 		print(f"""{Color.LG}
      __                       _  _
     / /  __ _ _   _  ___ _ __| || |
@@ -584,7 +586,7 @@ class Tool:
 				print(Color.LR+"yêu cầu: "+Color.LG+f"{option}"+Color.LR+" không tìm thấy")
 
 	def l7(self):
-		clear
+		os.system('clear')
 		print(f"""{Color.LG}
      __                      _____
     / /  __ _ _   _  ___ _ _|___  |
