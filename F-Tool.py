@@ -643,7 +643,7 @@ class Tool:
 				print(self.dev)
 			elif option in ['exit', 'EXIT']:
 				subprocess.run(['pkill -f F-Tool.py'], shell=True)
-			elif option in ['stop', 'STOP', '05, '5']:
+			elif option in ['stop', 'STOP', '05', '5']:
 				subprocess.run(['pkill screen'], shell=True)
 				print(f"{Color.LG} [!] Cuộc tấn công đã dừng lại!")
 			elif option in ['00', '0']:
