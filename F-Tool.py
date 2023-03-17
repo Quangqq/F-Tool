@@ -39,7 +39,7 @@ class Home:
 		self.styleText("\n [*] Đang tải xuống proxy...\n")
 		file_name = "utils/http.txt"
 		http_proxies = [
-			"https://api.proxyscrape.com/v2/?request=displayproxies&protocol=http&timeout=10000&country=all&ssl=all&anonymity=all",#copyright by daudau
+			"https://api.proxyscrape.com/v2/?request=displayproxies&protocol=http&timeout=1000&country=all&ssl=all&anonymity=all",#copyright by daudau
 			"https://www.proxy-list.download/api/v1/get?type=http&anon=elite",
 			"https://www.proxy-list.download/api/v1/get?type=http&anon=anonymous"]
 		with open(file_name, 'w'):
